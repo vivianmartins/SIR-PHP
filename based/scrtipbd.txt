@@ -51,3 +51,6 @@ CONSTRAINT fk_idTipo FOREIGN KEY (idTipo) REFERENCES
 tipo (idTipo)
 
 );
+
+
+INSERT INTO utilizadores (nome, email, senha) values ('julio', 'julio@mailp.com', '123');
