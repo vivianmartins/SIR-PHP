@@ -13,9 +13,9 @@ if(isset($_POST['email']) && isset ($_POST['senha'])){
         $senha = test_input($_POST['senha']);
         
         if (empty($email)){
-             header("Location: ../main.php?error= Requer email");
+             header("Location: ./main.php?error= Requer email");
          } else if (empty($senha)){
-            header("Location: ../main.php?error= Requer email");
+            header("Location: ./main.php?error= Requer email");
         }else{
             echo "valido";
         }
@@ -23,7 +23,7 @@ if(isset($_POST['email']) && isset ($_POST['senha'])){
 
 
     } else {
-        header("location:../main.php");
+        header("location:./main.php");
 
     }
 
