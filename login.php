@@ -21,7 +21,7 @@ if(isset($_POST['email']) && isset ($_POST['senha'])){
 		header("Location: ./main.php?error=requer-email");
 	} else if (empty($senha)){
 	// Verifica se foi introduzida uma passwd
-		header("Location: ./main.php?error=requer-senha");
+		header("Location: ./index.php?error=requer-senha");
 	}else{
 
 // Ainda não estas a incriptar a senha ao guardar na BD
@@ -50,14 +50,14 @@ if(isset($_POST['email']) && isset ($_POST['senha'])){
 					// redirect para o dash do user
 					header("Location: ./home.php");
 				}else {
-					header("Location: ./main.php?error=senha_errada");
+					header("Location: ./index.php?error=senha_errada");
 				}
 		}else{
 			header("Location: ./main.php?error=erro_a_encontrar_o_utilizador");
 		}
 	}
 } else {
-	header("location:./main.php");
+	header("location:./index.php");
 }
 
 ?>
