@@ -31,7 +31,7 @@ session_start();
             <img src="image/4.png" class="imag" alt="logo">
             <h3>Bem vindo, efetue o seu registo!</h3>
          <div >
-             <p1>Faça login informando o seu usuário e senha <a href="login.php">AQUI</a></p1>
+             <p1>Faça login utilizando o seu email e senha <a href="login.php">AQUI</a></p1>
          </div>           
             <?php                         
               if(isset($_SESSION['msg']))

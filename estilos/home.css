@@ -1,0 +1,12 @@
+.cards {
+	padding: 1rem;
+	padding-top: 0.5rem;
+	margin: 1rem;
+	border-style: solid;
+	border-color: lightgrey;
+	border-width: 1px;
+}
+
+.cards h6 {
+	color: darkslategrey;
+}
