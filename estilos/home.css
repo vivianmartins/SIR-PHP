@@ -1,12 +1,66 @@
 .cards {
 	padding: 1rem;
 	padding-top: 0.5rem;
-	margin: 1rem;
 	border-style: solid;
 	border-color: lightgrey;
 	border-width: 1px;
+	border-radius: 0.5rem;
 }
 
+.cards h3 {
+	color: white;
+}
+
+
 .cards h6 {
-	color: darkslategrey;
+	color: white;
+}
+
+.cards p {
+	color: white;
+}
+
+.m1 {
+	margin: 1rem;
+}
+
+.mt1 {
+	margin-top: 1rem;
+}
+
+.form {
+	max-width: 80vw;
+	padding: 2rem;
+	margin: 2rem;
+	border-style: solid;
+	border-color: lightgrey;
+	border-width: 1px;
+	border-radius: 0.5rem;
+}
+
+.form div {
+	margin-top: 1rem;
+}
+
+.button {
+	background-color: white;
+	border: none;
+	color: black;
+	padding: 0.5rem 1rem;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	transition-duration: 0.4s;
+	cursor: pointer;
+	border-radius: 0.5rem;
+  }
+
+  .button:hover {
+	background-color: rgb(53, 53, 53);
+	color: white;
+  }
+
+.button-dark {
+	background-color: black;
+	color: white;
 }

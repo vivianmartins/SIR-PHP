@@ -1,13 +1,13 @@
 <nav>
 	<ul class="menu"  >
 		<li >
-			<img src="image/4_1.png" class="imag" alt="logo">
+			<img src="./image/4_1.png" class="imag" alt="logo">
 		</li>
 		<li><a href="#"> Filtrar </a></li>
 		<li ><a href="#">Criar</a>
 			<ul>
-			<l ><a href="#">Tipos</a></l>
-			<l><a href="#">Categorias</a></l>
+			<l ><a href="./tipos.php">Tipos</a></l>
+			<!-- <l><a href="#">Categorias</a></l> -->
 			<l><a href="#">Apontamentos</a></l>
 			</ul>
 		</li>
