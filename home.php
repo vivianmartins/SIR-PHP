@@ -1,5 +1,4 @@
 <?php 
-	include_once "navbar.php";
    session_start();
    include "conexao.php";
    if (isset($_SESSION['email']) && isset($_SESSION['id'])) {   ?>
@@ -14,10 +13,11 @@
 </head>
 
 <body>
-	
+	<!-- fazer navbar, footer e lista de cards -->
+
 </body>
 
 </html>
 <?php }else{
-	header("Location: ./index.php");
+	header("Location: ./main.php");
 } ?>
