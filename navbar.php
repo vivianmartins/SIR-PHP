@@ -17,14 +17,14 @@
 			<a  style="	font-size: 22px;"href="#about"> Username </a>
 			<ul>
 			<l1 ><a href="#">Perfil</a></l1>
-			<l1><a href="#">Logout</a></l1>
+			<l1><a href="logout.php">Logout</a></l1>
 		
 			</ul>
 		</li>
 	</ul>
 </nav>
 
-<!--footer falta colocar a informação->
+<!--footer falta colocar a informação-->
 
 <footer class="footer" >
 
