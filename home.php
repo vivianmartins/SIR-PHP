@@ -33,6 +33,8 @@
 					<p><h5> Categoria: <?php echo $card['nome']; ?> </h5></p>
 					<p><h6> Criado em: <?php echo $card['dataCriacao']; ?> </h6></p>
 					<p> Conteudo: <?php echo $card['informacao']; ?></p>
+					<button  class="button button-dark"> Apagar </button>
+					<button  class="button button-dark"> Editar </button>
 				</div>
 			</div>
 			<?php endforeach; ?>
