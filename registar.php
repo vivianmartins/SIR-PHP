@@ -56,7 +56,7 @@ session_start();
              </div>
          </div>
            <div>
-             <button type="submit" class="button_r" role="button" >Registar</button>
+             <button name="registar" type="submit" class="button_r" role="button" >Registar</button>
           </div>
        </form>
      </div>            

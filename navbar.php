@@ -1,3 +1,20 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+	<link rel="stylesheet" href="estilos/navbar.css">
+	<link rel="stylesheet" href="estilos/user.css">
+	<link rel="stylesheet" href="estilos/home.css">
+	<link rel="shortcut icon" href="image/favi.png" />
+</head>
+<body>
+
+<div class="col-md-auto-2">	
 <nav>
 	<ul class="menu"  >
 		<li >
@@ -19,10 +36,9 @@
 		<li  style="float:right ">
 			<a  style="	font-size: 22px;"href="#about"> Username </a>
 			<ul>
-			<l1 ><a href="#">Perfil</a></l1>
+			<l1 ><a href="perfiluser.php">Perfil</a></l1>
 			<l1><a href="./logout.php">Logout</a></l1>
-		
-			</ul>
+      </ul>
 		</li>
 	</ul>
 </nav>
@@ -34,3 +50,6 @@
   <p>SISTEMAS DE INFORMAÇÃO EM REDE </p>
 
 </footer>
+</div>
+</body>
+</html>
