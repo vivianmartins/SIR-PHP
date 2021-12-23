@@ -18,13 +18,16 @@
 <nav>
 	<ul class="menu"  >
 		<li >
-			<img src="image/4_1.png" class="imag" alt="logo">
+			<img src="./image/4_1.png" class="imag" alt="logo">
 		</li>
+			
+		<li><a style="	font-size: 22px;" href="./home.php"> Início </a></li>
 		<li><a style="	font-size: 22px;" href="#"> Filtrar </a></li>
 		<li ><a style="	font-size: 22px;" href="#">Criar</a>
 			<ul>
-			<l ><a href="#">Tipos</a></l>
-			<l><a href="#">Categorias</a></l>
+		
+			<l ><a href="./tipos.php">Tipos</a></l>
+			<!-- <l><a href="#">Categorias</a></l> -->
 			<l><a href="#">Apontamentos</a></l>
 			</ul>
 		</li>
@@ -35,7 +38,7 @@
 			<ul>
 			<l1 ><a href="perfiluser.php">Perfil</a></l1>
 			<l1><a href="./logout.php">Logout</a></l1>
-			</ul>
+      </ul>
 		</li>
 	</ul>
 </nav>
