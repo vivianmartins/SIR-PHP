@@ -1,29 +1,27 @@
 <?php
-session_start();
-include "./conexao.php";
+require_once './conexao.php';
 
+if(isset($_POST['registar'])){
 
-$nome = filter_input(INPUT_POST,'nome', FILTER_SANITIZE_STRING);
-$email = filter_input(INPUT_POST,'email', FILTER_SANITIZE_EMAIL);
-$senha = filter_input(INPUT_POST,'senha', FILTER_SANITIZE_STRING);
+    $nome = $_POST['nome'];
+    $email = $_POST ['email'];
+    $senha = $_POST['senha'];
 
-/*VERIFICAR SE JÁ ESXISTE UTILIZADOR*/
-$sql = "select count(*) as total  from utilizadores where email = '$email'";
-$result = mysqli_query($conn, $sql);
-$row = mysqli_fetch_assoc($result);
+    $hashed_senha = password_hash( $senha, PASSWORD_DEFAULT);
 
-if($row['total'] == 1) {
-	$_SESSION['msg'] = "<p style='color:red; font-size:20px;'> Usuario já existe!</p>";
-	header('Location: registar.php');
-	exit;
-}
-/*CASO NÃO EXISTE É EFETUADO O REGISTO */ 
-$sql = "INSERT INTO utilizadores ( nome, email, senha) VALUES ('$nome', '$email', '$senha')";
-$result = mysqli_query($conn, $sql);
+    try{
+        $SQLInsert = "INSERT INTO utilizadores (nome, email, senha)
+        values (:nome,  :email, :senha)";
 
-if (mysqli_insert_id($conn)){
-    $_SESSION ['msg'] = "<p style='color:green; font-size:20px;'> Registo efetuado com sucesso!</p>";
-    header('Location: registar.php');
-    exit;
-} 
+        $statement = $pdo -> prepare ($SQLInsert);
+        $statement -> execute (array(':nome' => $nome, ':email' => $email, ':senha' => $hashed_senha ));
+
+        if($statement-> rowCount() == 1) {
+            $result = header('location: index.php');
+
+        }
+    }catch(PDOException $e){
+            echo "erro: " .$e->getMessage();
+        }
+    }
 ?>

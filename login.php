@@ -3,7 +3,51 @@ session_start();
 include "./conexao.php";
 
 // Se for enviado um email e senha
-if(isset($_POST['email']) && isset ($_POST['senha'])){
+if( isset($_POST['login']) ){
+
+$email = $_POST['email'];
+$senha = $_POST ['senha'];
+
+try {
+	$statement = $pdo->prepare("SELECT * FROM utilizadores WHERE email = :email");
+	$statement->bindValue(':email', $email);
+	$statement->execute();
+	$row = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+	foreach($row as $rw) {
+
+		$idUtiliz = $rw ['idUtiliz'];
+		$hashed_senha = $rw['senha'];
+		$email = $rw['email'];
+
+		if(password_verify($senha, $hashed_senha)){
+			$_SESSION['id'] = $idUtiliz;
+			$_SESSION['email'] = $email;
+			$_SESSION['nome'] = $rw['nome'];
+		// redirect para o dash do user
+			header('Location: ./home.php');
+		} else {
+			echo "ERROR: EMAIL ou SENHA INVALIDOS ";
+		}
+	}
+} catch (PDOException $e){
+		echo "erro: ". $e->getMessage();
+	}
+}
+header('Location: ./index.php');
+
+?>
+
+
+<!----
+
+<
+	/*?php
+session_start();
+include "./conexao.php";
+
+// Se for enviado um email e senha
+if(isset($_POST['login-btn'])){
 
 	// Formata os dados
 	function test_input($data){
@@ -27,37 +71,30 @@ if(isset($_POST['email']) && isset ($_POST['senha'])){
 // Ainda não estas a incriptar a senha ao guardar na BD
 		// $senha = md5($senha);
 		
-		// Querry para ir buscar os dados à BD
-		$sql = "SELECT * FROM utilizadores where email='$email'
-		AND senha='$senha'";
-		
-		// Realiza a querry
-		$result = mysqli_query($conn, $sql);
+		// Prepara a querry
+		$statement = $pdo->prepare("SELECT * FROM utilizadores WHERE email = :email AND senha=:senha");
+		$statement->bindValue(':email', $email);
+		$statement->bindValue(':senha', $senha);
+		$statement->execute();
+		$dados = $statement->fetchAll(PDO::FETCH_ASSOC);
 
 		// Verifica se foi encontrado algum resultado
-		if(mysqli_num_rows($result)==1){
+		if(!empty($dados)){
+			// Set variavel global de sessao
+			$_SESSION['id'] = $dados[0]['idUtiliz'];
+			$_SESSION['nome'] = $dados[0]['nome'];
+			$_SESSION['email'] = $dados[0]['email'];
+			$_SESSION['senha'] = $dados[0]['senha'];
+			$_SESSION['ativo'] = $dados[0]['ativo'];
 
-			// Pega na primeira linha do output da querry
-			$row = mysqli_fetch_assoc($result);
-				if($row['senha'] === $senha) {
-					// Set variavel global de sessao
-					$_SESSION['id'] = $row['idUtiliz'];
-					$_SESSION['nome'] = $row['nome'];
-					$_SESSION['email'] = $row['email'];
-					$_SESSION['senha'] = $row['senha'];
-					$_SESSION['ativo'] = $row['ativo'];
-
-					// redirect para o dash do user
-					header("Location: ./home.php");
-				}else {
-					header("Location: ./index.php?error=senha_errada");
-				}
+			// redirect para o dash do user
+			header("Location: ./home.php");
 		}else{
-			header("Location: ./main.php?error=erro_a_encontrar_o_utilizador");
+			header("Location: ./main.php?error=senha_errada");
 		}
 	}
 } else {
 	header("location:./index.php");
 }
 
-?>
+?*/>--->

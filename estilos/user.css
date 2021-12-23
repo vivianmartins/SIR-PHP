@@ -1,0 +1,61 @@
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 900px;
+  margin: auto;
+  text-align: center;
+  
+}
+
+.title {
+  color: rgb(0, 0, 0);
+  font-size: 25px;
+  background-color: rgb(231, 231, 231);
+}
+
+.botao{
+font-family: 'Courier New', Courier, monospace;
+color: white;
+background-color: #1e2e4d;
+padding: 15px;
+width: 100%;
+
+}
+p{
+  font-size: 20px;
+}
+
+.card_u{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 1500px;
+  margin: auto;
+  text-align: center;
+ 
+  
+  
+}
+
+.botaoup{
+  font-family: 'Courier New', Courier, monospace;
+  color: white;
+  background-color: #1e2e4d;
+  padding: 20px;
+  width: 100%;
+  }
+
+.input {
+  width: 50%;
+  padding: 12px 20px;
+  margin-left: 20px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.input:focus {
+  border: 2px solid rgb(165, 148, 0);
+}
+
+.edtext{
+  margin-left: 20px;;
+}
