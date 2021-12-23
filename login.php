@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 include "./conexao.php";
@@ -10,42 +9,32 @@ $email = $_POST['email'];
 $senha = $_POST ['senha'];
 
 try {
-	$SQLQuery = "SELECT * FROM utilizadores where email = :email ";
-	$statement = $pdo -> prepare($SQLQuery);
-	$statement->execute(array(':email' => $email)); 
+	$statement = $pdo->prepare("SELECT * FROM utilizadores WHERE email = :email");
+	$statement->bindValue(':email', $email);
+	$statement->execute();
+	$row = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-	while ($row = $statement -> fetch ()){
-		$idUtiliz = $row ['id'];
-		$hashed_senha = $row['senha'];
-		$email = $row['email'];
+	foreach($row as $rw) {
 
-		/* $statement = $pdo->prepare("SELECT * FROM utilizadores WHERE email = :email");
-		$statement->bindValue(':email', $email);
-		$statement->execute();
-
-	while ($row = $statement -> fetch ()){
-		$idUtiliz = $row ['id'];
-		$hashed_senha = $row['senha'];
-		$email = $row['email'];
-*/
+		$idUtiliz = $rw ['idUtiliz'];
+		$hashed_senha = $rw['senha'];
+		$email = $rw['email'];
 
 		if(password_verify($senha, $hashed_senha)){
 			$_SESSION['id'] = $idUtiliz;
 			$_SESSION['email'] = $email;
+			$_SESSION['nome'] = $rw['nome'];
 		// redirect para o dash do user
 			header('Location: ./home.php');
-	} 
-	else {
-		echo "ERROR: INVALIDO EMAIL E SENHA ";
-			}
+		} else {
+			echo "ERROR: EMAIL ou SENHA INVALIDOS ";
 		}
-}
-	catch (PDOException $e){
+	}
+} catch (PDOException $e){
 		echo "erro: ". $e->getMessage();
 	}
-	
 }
-
+header('Location: ./index.php');
 
 ?>
 
@@ -108,4 +97,4 @@ if(isset($_POST['login-btn'])){
 	header("location:./index.php");
 }
 
-?*/>---> 
+?*/>--->

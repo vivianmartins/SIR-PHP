@@ -22,6 +22,8 @@
 		$statement->bindValue(':cor', $cor);
 	
 		$statement->execute();
+
+		header('Location: ./tipos.php');
 		}
 	}
 
