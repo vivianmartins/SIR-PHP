@@ -77,16 +77,15 @@
 			<?php foreach($cards as $card): ?>
 			<div class="col-md-6 cards" style="background-color: <?php echo $card['cor']; ?> !important;">
 				<div>
-					<p>
-						<h3> <?php echo $card['titulo']; ?></h3>
-					</p>
-					<p>
-						<h5> Categoria: <?php echo $card['nome']; ?> </h5>
-					</p>
-					<p>
-						<h6> Criado em: <?php echo $card['dataCriacao']; ?> </h6>
-					</p>
-					<p> -> <?php echo $card['informacao']; ?></p>
+					<p><h3> <?php echo $card['titulo']; ?></h3></p>
+					<p><h5> Categoria: <?php echo $card['nome']; ?> </h5></p>
+					<p><h6> Criado em: <?php echo $card['dataCriacao']; ?> </h6></p>
+					<p> Conteudo: <?php echo $card['informacao']; ?></p>
+					<form action="/tp1sir/eliminar-apontamentos.php" method="post">
+						<input type="hidden" name="id_ap" value="<?php echo($card['id_ap']);?>">
+						<button type="submit" class="button button-dark"> Apagar </button>
+					</form> <br> 
+					<button  class="button button-dark"> Editar </button>
 				</div>
 			</div>
 			<?php endforeach; ?>
