@@ -35,7 +35,10 @@
 						<h3> <?php echo $card['nome']; ?></h3>
 					</p>
 					<p> Codigo Hexadecimal da cor selcionada: <?php echo $card['cor']; ?></p>
-					<form action="./eliminar-tipos.php" method="post"><button  class="button button-dark"> Apagar </button></form> <br>
+					<form action="/tp1sir/eliminar-tipos.php" method="post">
+						<input type="hidden"name="search" value="<?php echo($$card['idTipo']); ?>">
+						<button type="submit" class="button button-dark"> Apagar </button>
+					</form> <br>
 					<button  class="button button-dark"> Editar </button>
 				</div>
 			</div>
