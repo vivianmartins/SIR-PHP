@@ -33,7 +33,10 @@
 					<p><h5> Categoria: <?php echo $card['nome']; ?> </h5></p>
 					<p><h6> Criado em: <?php echo $card['dataCriacao']; ?> </h6></p>
 					<p> Conteudo: <?php echo $card['informacao']; ?></p>
-					<form action="./eliminar-apontamentos.php" method="post"><button  class="button button-dark"> Apagar </button></form> <br>
+					<form action="/tp1sir/eliminar-apontamentos.php" method="post">
+						<input type="hidden" name="id_ap" value="<?php echo($card['id_ap']);?>">
+						<button type="submit" class="button button-dark"> Apagar </button>
+					</form> <br> 
 					<button  class="button button-dark"> Editar </button>
 				</div>
 			</div>
