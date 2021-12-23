@@ -50,7 +50,7 @@ if (!isset($_SESSION['email']) && !isset($_SESSION['id'])) {   ?>
                     </div>
                 </div>
                 <div>
-                    <button type="submit" class="button_r" role="button">Iniciar sessão</button>
+                    <button type="submit" name="login" class="button_r" role="button">Iniciar sessão</button>
                 </div>
                 <!---BOTAO TEMPORARIO -->
                 <div>
