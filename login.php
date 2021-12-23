@@ -1,9 +1,64 @@
+
 <?php
 session_start();
 include "./conexao.php";
 
 // Se for enviado um email e senha
-if(isset($_POST['email']) && isset ($_POST['senha'])){
+if( isset($_POST['login']) ){
+
+$email = $_POST['email'];
+$senha = $_POST ['senha'];
+
+try {
+	$SQLQuery = "SELECT * FROM utilizadores where email = :email ";
+	$statement = $pdo -> prepare($SQLQuery);
+	$statement->execute(array(':email' => $email)); 
+
+	while ($row = $statement -> fetch ()){
+		$idUtiliz = $row ['id'];
+		$hashed_senha = $row['senha'];
+		$email = $row['email'];
+
+		/* $statement = $pdo->prepare("SELECT * FROM utilizadores WHERE email = :email");
+		$statement->bindValue(':email', $email);
+		$statement->execute();
+
+	while ($row = $statement -> fetch ()){
+		$idUtiliz = $row ['id'];
+		$hashed_senha = $row['senha'];
+		$email = $row['email'];
+*/
+
+		if(password_verify($senha, $hashed_senha)){
+			$_SESSION['id'] = $idUtiliz;
+			$_SESSION['email'] = $email;
+		// redirect para o dash do user
+			header('Location: ./home.php');
+	} 
+	else {
+		echo "ERROR: INVALIDO EMAIL E SENHA ";
+			}
+		}
+}
+	catch (PDOException $e){
+		echo "erro: ". $e->getMessage();
+	}
+	
+}
+
+
+?>
+
+
+<!----
+
+<
+	/*?php
+session_start();
+include "./conexao.php";
+
+// Se for enviado um email e senha
+if(isset($_POST['login-btn'])){
 
 	// Formata os dados
 	function test_input($data){
@@ -53,4 +108,4 @@ if(isset($_POST['email']) && isset ($_POST['senha'])){
 	header("location:./index.php");
 }
 
-?>
+?*/>---> 
