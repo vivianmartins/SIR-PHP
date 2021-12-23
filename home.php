@@ -2,7 +2,7 @@
    	session_start();
    	require "conexao.php";
 
-	$statement = $pdo->prepare("SELECT * FROM apontamentos a, tipo t WHERE a.idUtiliz = :idUtil AND a.idTIpo = t.idTIpo");
+	$statement = $pdo->prepare("SELECT * FROM apontamentos a, tipo t WHERE a.idUtiliz = :idUtil AND a.idTIpo = t.idTIpo AND a.ativo=1");
 	$statement->bindValue(':idUtil', $_SESSION['id']);
 	$statement->execute();
 	$cards = $statement->fetchAll(PDO::FETCH_ASSOC);
