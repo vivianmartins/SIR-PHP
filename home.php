@@ -11,7 +11,7 @@
 			if(empty($_GET['search'])){
 				header('Location: ./home.php');
 			}
-			$statement = $pdo->prepare('SELECT * FROM apontamentos a, tipo t WHERE a.idUtiliz = :idUtil AND a.idTIpo = t.idTIpo AND ( t.nome = :campo or a.titulo = :campo)');
+			$statement = $pdo->prepare('SELECT * FROM apontamentos a, tipo t WHERE a.ativo=1 AND a.idUtiliz = :idUtil AND a.idTIpo = t.idTIpo AND ( t.nome = :campo or a.titulo = :campo)');
 			$statement->bindValue(':idUtil', $_SESSION['id']);
 			$statement->bindValue(':campo', $_GET['search']);
 			$statement->execute();
@@ -22,7 +22,7 @@
 			
 		// Querry sem o pedido GET
 		} else {
-			$statement = $pdo->prepare("SELECT * FROM apontamentos a, tipo t WHERE a.idUtiliz = :idUtil AND a.idTIpo = t.idTIpo");
+			$statement = $pdo->prepare("SELECT * FROM apontamentos a, tipo t WHERE a.idUtiliz = :idUtil AND a.idTIpo = t.idTIpo AND a.ativo=1");
 			$statement->bindValue(':idUtil', $_SESSION['id']);
 			$statement->execute();
 			$cards = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -53,10 +53,10 @@
 
 		<div class="mt-1" style="display: flex;">
 		<div>
-			<a href="#" class="button button-dark mr1"> Criar novo</a>
+			<a href="./criar-apontamentos.php" class="button button-dark mr1"> Criar Novo Apontamento</a>
 		</div>
 			<div class="dropdown mr1">
-				<span class="button button-dark">Categoria</span>
+				<span class="button button-dark">Filtrar Por Categoria</span>
 				<div class="dropdown-content">
 					<a class="button" href="/tp1sir/home.php"> Todos</a>
 					<?php foreach($cards as $card): ?>
