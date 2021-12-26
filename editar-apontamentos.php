@@ -7,13 +7,13 @@
         $id_ap = $_POST['id_ap'];
 		$titulo = $_POST['titulo'];
 		$informacao = $_POST['informacao'];
-		$idTipo = $_POST['idTipo'];
+		$idTIpo = $_POST['idTIpo'];
 	
-		$statement = $pdo->prepare("UPDATE apontamentos (titulo, informacao, idTipo) SET titulo=':titulo', informacao=':informacao', idTipo=':idTipo' WHERE id_ap = :id_ap;");
+		$statement = $pdo->prepare("UPDATE apontamentos SET titulo='', informacao='', idTIpo='' WHERE id_ap = :id_ap;");
 	
 		$statement->bindValue(':titulo', $titulo);
 		$statement->bindValue(':informacao', $informacao);
-		$statement->bindValue(':idTipo', $idTipo);
+		$statement->bindValue(':idTIpo', $idTIpo);
         $statement->bindValue(':id_ap', $id_ap);
 	
 		$statement->execute();
