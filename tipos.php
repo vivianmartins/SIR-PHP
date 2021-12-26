@@ -2,11 +2,14 @@
    	session_start();
    	require "./conexao.php";
 
-	$statement = $pdo->prepare("SELECT * FROM tipo WHERE ativo=1");
-	$statement->execute();
-	$cards = $statement->fetchAll(PDO::FETCH_ASSOC);
-
-   	if (isset($_SESSION['email']) && isset($_SESSION['id'])) {   ?>
+	// Verifica se a sessão foi iniciada
+   	if (isset($_SESSION['email']) && isset($_SESSION['id'])) { 
+		// Busca todos os tipos que o utilizador criou
+		$statement = $pdo->prepare("SELECT * FROM tipo WHERE ativo=1 and idUtil = :idUtil");
+		$statement->bindValue(':idUtil', $_SESSION['id']);
+		$statement->execute();
+		$cards = $statement->fetchAll(PDO::FETCH_ASSOC);  
+?>
 
 <!DOCTYPE html>
 <html>
@@ -24,7 +27,7 @@
 	<?php require_once "./navbar.php"; ?>
 
 	<div class="container">
-		<a class="button button-dark m1" href="./criar-tipos.php" class="m1"> Criar tipos</a>
+		<a class="button button-dark m1" href="./criar-tipos.php" class="m1"> Criar Tipos</a>
 
 		<!-- Cards com os tipos ja criados para depois se poder editar -->
 		<div class="row">
@@ -38,8 +41,7 @@
 					<form action="/tp1sir/eliminar-tipos.php" method="post">
 						<input type="hidden" name="idTipo" value="<?php echo($card['idTIpo']);?>">
 						<button type="submit" class="button button-dark"> Apagar </button>
-					</form> <br>
-					<button  class="button button-dark"> Editar </button>
+					</form>
 				</div>
 			</div>
 			<?php endforeach; ?>
