@@ -38,8 +38,7 @@
 					<form action="/tp1sir/eliminar-tipos.php" method="post">
 						<input type="hidden" name="idTipo" value="<?php echo($card['idTIpo']);?>">
 						<button type="submit" class="button button-dark"> Apagar </button>
-					</form> <br>
-					<button  class="button button-dark"> Editar </button>
+					</form> 
 				</div>
 			</div>
 			<?php endforeach; ?>

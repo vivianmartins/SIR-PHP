@@ -2,11 +2,12 @@
 	<nav>
 		<ul class="menu">
 			<li>
-				<img src="./image/4_1.png" class="imag" alt="logo">
+				<img src="./image/4.png" class="imag" alt="logo">
 			</li>
 
 			<li><a style="	font-size: 22px;" href="./home.php"> Apontamentos </a></li>
 			<li><a href="./tipos.php"> Categorias </a></li>
+			<li><a href="./lixo.php"> Lixo </a></li>
 			<?php /*
 			<!-- <li><a style="	font-size: 22px;" href="#"> Filtrar </a></li> -->
 			<li><a style="	font-size: 22px;" href="#">Criar</a>

@@ -11,7 +11,7 @@
 			if(empty($_GET['search'])){
 				header('Location: ./home.php');
 			}
-			$statement = $pdo->prepare('SELECT * FROM apontamentos a, tipo t WHERE a.ativo=1 AND a.idUtiliz = :idUtil AND a.idTIpo = t.idTIpo AND ( t.nome like concat("%", :campo, "%") or a.titulo like concat("%", :campo, "%"))');
+			$statement = $pdo->prepare('SELECT * FROM apontamentos a, tipo t WHERE a.ativo=0 AND a.idUtiliz = :idUtil AND a.idTIpo = t.idTIpo AND ( t.nome = :campo or a.titulo = :campo)');
 			$statement->bindValue(':idUtil', $_SESSION['id']);
 			$statement->bindValue(':campo', $_GET['search']);
 			$statement->execute();
@@ -22,7 +22,7 @@
 			
 		// Querry sem o pedido GET
 		} else {
-			$statement = $pdo->prepare("SELECT * FROM apontamentos a, tipo t WHERE a.idUtiliz = :idUtil AND a.idTIpo = t.idTIpo AND a.ativo=1");
+			$statement = $pdo->prepare("SELECT * FROM apontamentos a, tipo t WHERE a.idUtiliz = :idUtil AND a.idTIpo = t.idTIpo AND a.ativo=0");
 			$statement->bindValue(':idUtil', $_SESSION['id']);
 			$statement->execute();
 			$cards = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -51,28 +51,6 @@
 
 	<div class="container">
 
-		<div class="mt-1" style="display: flex;">
-		<div>
-			<a href="./criar-apontamentos.php" class="button button-dark mr1"> Criar Novo Apontamento</a>
-		</div>
-			<div class="dropdown mr1">
-				<span class="button button-dark">Filtrar Por Categoria</span>
-				<div class="dropdown-content">
-					<a class="button" href="/tp1sir/home.php"> Todos</a>
-					<?php foreach($cards as $card): ?>
-					<div>
-						<a class="button" href="/tp1sir/home.php?search=<?php echo($card['nome']) ?>"> <?php echo($card['nome']) ?></a>
-					</div>
-					<?php endforeach; ?>
-				</div>
-			</div>
-
-			<form action="#" method="get">
-				<input type="text" id="search" name="search" placeholder="<?php echo($srch); ?>">
-				<button type="submit" class="button button-dark"> <i class="bi bi-search"></i></button>
-			</form>
-		</div>
-
 		<div class="row">
 			<?php foreach($cards as $card): ?>
 			<div class="col-md-6 cards" style="background-color: <?php echo $card['cor']; ?> !important;">
@@ -81,14 +59,10 @@
 					<p><h5> Categoria: <?php echo $card['nome']; ?> </h5></p>
 					<p><h6> Criado em: <?php echo $card['dataCriacao']; ?> </h6></p>
 					<p> Conteudo: <?php echo $card['informacao']; ?></p>
-					<form action="/tp1sir/eliminar-apontamentos.php" method="post">
+					<form action="/tp1sir/recuperar-apontamentos.php" method="post">
 						<input type="hidden" name="id_ap" value="<?php echo($card['id_ap']);?>">
-						<button type="submit" class="button button-dark"> Apagar </button>
-					</form> <br> 
-					<form action="/tp1sir/editar-apontamentos.php" method="post">
-						<input type="hidden" name="id_ap" value="<?php echo($card['id_ap']);?>">
-						<button type="submit" class="button button-dark"> Editar </button>
-					</form>
+						<button type="submit" class="button button-dark"> Recuperar </button>
+					</form>  
 				</div>
 			</div>
 			<?php endforeach; ?>
