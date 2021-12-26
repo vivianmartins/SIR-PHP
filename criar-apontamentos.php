@@ -7,7 +7,6 @@
 		$titulo = $_POST['titulo'];
 		$informacao = $_POST['informacao'];
 		$idTipo = $_POST['idTipo'];
-		$idUtiliz = $_POST['idUtiliz'];
 	
 		if (!$titulo){
 			$erros[]= 'O titulo é obrigatório!';
@@ -21,18 +20,14 @@
 			$erros[]= 'A informacao é obrigatória!';
 		}
 
-		if (!$idUtiliz){
-			$erros[]= 'O utilizador é obrigatório!';
-		}
-
 		if (empty($erros)){
 	
-		$statement = $pdo->prepare("INSERT INTO apontamentos (titulo, informacao, idTipo, idUtiliz) VALUES (:titulo, :informacao, :idTipo, :idUtiliz);");
+		$statement = $pdo->prepare("INSERT INTO apontamentos (titulo, informacao, idTipo, idUtiliz) VALUES (:titulo, :informacao, :idTipo, :idUtil);");
 	
 		$statement->bindValue(':titulo', $titulo);
 		$statement->bindValue(':informacao', $informacao);
 		$statement->bindValue(':idTipo', $idTipo);
-		$statement->bindValue(':idUtiliz', $idUtiliz);
+		$statement->bindValue(':idUtil', $_SESSION['id']);
 	
 		$statement->execute();
 
@@ -64,28 +59,24 @@
 				<div class="field">
 					<div class="control">
 						<label for="#titulo"> <h5> Titulo: </h5></label><br>
-						<input name="titulo" class="input" type="titulo" placeholder="Insira o titulo do apontamento...">
+						<input style="min-width: 40rem;" name="titulo" class="input" type="text" placeholder="Insira o titulo do apontamento...">
 					</div>
 				</div>
 
 				<div class="field">
 					<div class="control">
 						<label for="#idTipo"> <h5> Categoria: </h5></label><br>
-						<input name="idTipo" class="input" type="idTipo" placeholder="Insira o nº do tipo...">
+						<select name="idTipo" style="min-width: 40rem;">
+							<option value="14">Aniversários</option>
+							<option value="15">Localização</option>
+						</select>			
 					</div>
 				</div>
 
 				<div class="field">
 					<div class="control">
 						<label for="#informacao"> <h5> Conteudo: </h5></label><br>
-						<input name="informacao" class="input" type="informacao" placeholder="Insira o conteudo do apontamento...">
-					</div>
-				</div>
-
-				<div class="field">
-					<div class="control">
-						<label for="#idUtiliz"> <h5> Utilizador: </h5></label><br>
-						<input name="idUtiliz" class="input" type="idUtiliz" placeholder="Insira o seu nº de utilizador...">
+						<textarea placeholder="Insira o conteudo do apontamento..." name="informacao" cols="79" rows="7"></textarea>
 					</div>
 				</div>
 

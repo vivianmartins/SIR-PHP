@@ -11,7 +11,7 @@
 			if(empty($_GET['search'])){
 				header('Location: ./home.php');
 			}
-			$statement = $pdo->prepare('SELECT * FROM apontamentos a, tipo t WHERE a.ativo=1 AND a.idUtiliz = :idUtil AND a.idTIpo = t.idTIpo AND ( t.nome = :campo or a.titulo = :campo)');
+			$statement = $pdo->prepare('SELECT * FROM apontamentos a, tipo t WHERE a.ativo=1 AND a.idUtiliz = :idUtil AND a.idTIpo = t.idTIpo AND ( t.nome like concat("%", :campo, "%") or a.titulo like concat("%", :campo, "%"))');
 			$statement->bindValue(':idUtil', $_SESSION['id']);
 			$statement->bindValue(':campo', $_GET['search']);
 			$statement->execute();
