@@ -87,6 +87,9 @@
 					</form> <br> 
 					<form action="/tp1sir/editar-apontamentos.php" method="post">
 						<input type="hidden" name="id_ap" value="<?php echo($card['id_ap']);?>">
+						<input type="hidden" name="titulo" value="<?php echo($card['titulo']);?>">
+						<input type="hidden" name="informacao" value="<?php echo($card['informacao']);?>">
+						<input type="hidden" name="idTipo" value="<?php echo($card['idTipo']);?>">
 						<button type="submit" class="button button-dark"> Editar </button>
 					</form>
 				</div>
