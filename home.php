@@ -53,9 +53,6 @@
 
 		<div class="row">
 			<div class="col-md-6 mt-1" style="display: flex; flex-direction: row-reverse;">
-				<div>
-					<a href="./criar-apontamentos.php" class="button button-dark mr1"> Criar Novo Apontamento</a>
-				</div>
 				<div class="dropdown mr1">
 					<span class="button button-dark">Filtrar Por Categoria</span>
 					<div class="dropdown-content">
@@ -67,6 +64,9 @@
 						</div>
 						<?php endforeach; ?>
 					</div>
+				</div>
+				<div>
+					<a href="./criar-apontamentos.php" class="button button-dark mr1"> Criar Novo Apontamento</a>
 				</div>
 			</div>
 

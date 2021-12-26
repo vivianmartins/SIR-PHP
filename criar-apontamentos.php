@@ -2,22 +2,29 @@
    	session_start();
    	require "./conexao.php";
 
+	// Verifica se a sessão está iniciada
    	if (isset($_SESSION['email']) && isset($_SESSION['id'])) {   
+		// Verfica se recebeu um pedido POST
 		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-			$titulo = $_POST['titulo'];
-			$informacao = $_POST['informacao'];
-			$idTipo = $_POST['idTipo'];
-		
-			if (!$titulo){
+
+			// Verificacao se os dados foram submetidos
+			// Titulo
+			if (!array_key_exists('titulo', $_POST) || empty($_POST['titulo'])){
 				$erros[]= 'O titulo é obrigatório!';
+			} else {
+				$titulo = $_POST['titulo'];
 			}
-	
-			if (!$idTipo){
+			// Tipo
+			if (!array_key_exists('idTipo', $_POST)){
 				$erros[]= 'O tipo é obrigatório!';
+			} else {
+				$idTipo = $_POST['idTipo'];
 			}
-		
-			if (!$informacao){
-				$erros[]= 'A informacao é obrigatória!';
+			// Informacao
+			if (!array_key_exists('informacao', $_POST) || empty($_POST['informacao'])){
+				$erros[]= 'O conteudo é obrigatório!';
+			} else {
+				$informacao = $_POST['informacao'];
 			}
 	
 			if (empty($erros)){
@@ -50,6 +57,7 @@
 		integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 	<link rel="stylesheet" href="./estilos/navbar.css">
 	<link rel="stylesheet" href="./estilos/home.css">
+	<link rel="stylesheet" href="estilos/user.css">
 	<link rel="shortcut icon" href="./image/favi.png" />
 </head>
 
@@ -59,6 +67,12 @@
 	<div class="container">
 		<form class="form" action="#" method="post">
 			<h1> Criar um Novo Apontamento</h1> <br>
+			<?php if(!empty($erros)) {
+				foreach ($erros as $erro) {
+					echo ('<h6 style="color:red;">' . $erro . ' </h6>');
+				}
+			} ?>
+			<div>
 
 			<div class="field">
 				<div class="control">
@@ -75,7 +89,7 @@
 					<label for="#idTipo">
 						<h5> Tipo de Apontamento: </h5>
 					</label><br>
-					<select name="idTipo" style="min-width: 40rem;">
+					<select name="idTipo" style="min-width: 40rem;" class="input">
 						<?php foreach($catgs as $catg): ?>
 						<option value="<?php echo $catg['idTIpo'];?>"><?php echo $catg['nome'];?></option>
 						<?php endforeach; ?>

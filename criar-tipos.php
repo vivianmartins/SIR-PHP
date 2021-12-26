@@ -4,18 +4,22 @@
 
 	// Verifica se a sessão está iniciada
    	if (isset($_SESSION['email']) && isset($_SESSION['id'])) {   
-		// Verfica se recebeu os valores do pedido
+		// Verfica se recebeu um pedido POST
 		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-			$nome = $_POST['nome'];
-			$cor = $_POST['cor'];
-		
 			// Verifica se recebeu todos os valores
-			if (!$nome){
+			
+			if (!array_key_exists('nome', $_POST) || empty($_POST['nome'])){
 				$erros[]= 'O nome é obrigatorio!';
+			} else {
+				$nome = $_POST['nome'];
 			}
-			if (!$cor){
+			
+			if (!array_key_exists('cor', $_POST)){
 				$erros[]= 'A cor é obrigatoria!';
+			} else {
+				$cor = $_POST['cor'];
 			}
+
 			if (empty($erros)){
 		
 			// Insere na BD
@@ -42,6 +46,7 @@
 		integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 	<link rel="stylesheet" href="./estilos/navbar.css">
 	<link rel="stylesheet" href="./estilos/home.css">
+	<link rel="stylesheet" href="estilos/user.css">
 	<link rel="shortcut icon" href="./image/favi.png" />
 </head>
 
@@ -51,9 +56,14 @@
 	<div class="container">
 		<form class="form" action="#" method="post">
 			<h1> Criar um novo tipo de apontamento</h1>
+			<?php if(!empty($erros)) {
+				foreach ($erros as $erro) {
+					echo ('<h6 style="color:red;">' . $erro . ' </h6>');
+				}
+			} ?>
 			<div>
 				<label for="#nome"> <h5> Nome: </h5></label><br>
-				<input type="text" name="nome" id="nome">
+				<input type="text" name="nome" id="nome" class="input">
 			</div>
 			<!-- Cor -->
 			<p><h5> Cor de fundo: </h5></p>
