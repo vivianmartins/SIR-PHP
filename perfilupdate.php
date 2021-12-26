@@ -10,6 +10,8 @@ $statement->bindValue(':id', $idUtiliz);
 $statement->execute();
 $utilizadores = $statement->fetch(PDO::FETCH_ASSOC);
 
+
+
 $nome = $utilizadores ['nome'];
 $email = $utilizadores ['email'];
 $senha = $utilizadores['senha'];
@@ -29,14 +31,26 @@ if($_SERVER ['REQUEST_METHOD'] === 'POST'){
     }
 
 	if(empty($erros)){
-        $statement = $pdo ->prepare ("UPDATE utilizadores set nome= :nome,  senha =:senha, email = :email where idUtiliz = :id");	
-        $statement -> bindValue(':nome', $nome);
-        $statement -> bindValue(':senha', $senha);
-        $statement -> bindValue(':email', $email);
-        $statement -> bindValue(':id', $idUtiliz);
-        
-        $statement->execute();
-        header('location: perfiluser.php');
+        $hashed_senha= password_hash($senha, PASSWORD_DEFAULT);
+         $statement = $pdo ->prepare ("UPDATE utilizadores set nome= :nome,  senha =:senha where idUtiliz = :id");	
+        try
+        {       	
+            $statement -> bindValue(':id', $idUtiliz);
+            $statement -> bindValue(':nome', $nome);
+            $statement -> bindValue(':senha', $hashed_senha);
+            $statement->execute();
+          
+        }
+        catch (PDOException $e)
+        {
+            {
+               
+                echo $e;
+                die();
+              }
+                     header('location: perfiluser.php');
+      }		
+       
     }		
 }
 
@@ -94,7 +108,7 @@ include_once './navbar.php'
                     -->
 
                 <div class="mb-3">
-                    <a class="botaoup" style="color:white; width=100%" href="perfiluser.php">Voltar ao perfil</a>
+                    <a class="botaoup" style="color:white; width:100%" href="perfiluser.php">Voltar ao perfil</a>
                 </div>
                 <button type="submit" class="botaoup">Submeter</button>
 
