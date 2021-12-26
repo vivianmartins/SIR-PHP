@@ -97,7 +97,7 @@
 							<input type="hidden" name="id_ap" value="<?php echo($card['id_ap']);?>">
 							<button type="submit" class="button button-dark"> Apagar </button>
 						</form>
-						<form action="/tp1sir/editar-apontamentos.php" method="post">
+						<form action="/tp1sir/editar-apontamentos.php" method="get">
 							<input type="hidden" name="id_ap" value="<?php echo($card['id_ap']);?>">
 							<button type="submit" class="button button-dark"> Editar </button>
 						</form>
