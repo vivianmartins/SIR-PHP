@@ -8,10 +8,12 @@ CREATE TABLE utilizadores (
 );
 
 CREATE TABLE tipo (
-	idTIpo INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	nome varchar (300),
-	cor varchar (50),
-	ativo boolean default true
+  idTIpo int(11) NOT NULL auto_increment primary key,
+  nome varchar(300) DEFAULT NULL,
+  cor varchar(50) DEFAULT NULL,
+  ativo tinyint(1) DEFAULT 1,
+  idUtil int,
+  CONSTRAINT tipo_FK FOREIGN KEY (idUtil) REFERENCES utilizadores (idUtiliz)
 );
 
 CREATE TABLE apontamentos(
@@ -24,13 +26,5 @@ CREATE TABLE apontamentos(
 	idTIpo integer,
 	idUtiliz integer,
 	CONSTRAINT fk_idUtiliz FOREIGN KEY (idUtiliz) REFERENCES utilizadores (idUtiliz),
-	CONSTRAINT fk_idTipo FOREIGN KEY (idTipo) REFERENCES
-	tipo (idTipo)
+	CONSTRAINT fk_idTipo FOREIGN KEY (idTipo) REFERENCES tipo (idTipo)
 );
-
-/* Gerar dados */
-INSERT INTO utilizadores (nome, email, senha) values ('julio', 'julio@mailp.com', '123');
-insert into tipo (nome, cor) values ('tipo1', '#123456');
-insert into apontamentos (titulo, informacao, idtipo, idutiliz) values ('teste', 
-'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veritatis est, necessitatibus soluta vero obcaecati sit culpa debitis facilis, 
-consectetur dolor quaerat! Nesciunt facilis laborum cum aut, quasi dolorem aspernatur. Dolores.', '1', '1');
