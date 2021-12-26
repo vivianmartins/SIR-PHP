@@ -2,32 +2,36 @@
    	session_start();
    	require "./conexao.php";
 
-	//	Fazer aqui o codigo para verficar os dados e dps guardar na bd
-	if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-		$nome = $_POST['nome'];
-		$cor = $_POST['cor'];
+	// Verifica se a sessão está iniciada
+   	if (isset($_SESSION['email']) && isset($_SESSION['id'])) {   
+		// Verfica se recebeu os valores do pedido
+		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+			$nome = $_POST['nome'];
+			$cor = $_POST['cor'];
+		
+			// Verifica se recebeu todos os valores
+			if (!$nome){
+				$erros[]= 'O nome é obrigatorio!';
+			}
+			if (!$cor){
+				$erros[]= 'A cor é obrigatoria!';
+			}
+			if (empty($erros)){
+		
+			// Insere na BD
+			$statement = $pdo->prepare("INSERT INTO tipo(nome, cor, idUtil) VALUES (:nome, :cor, :idutil);");
+		
+			$statement->bindValue(':nome', $nome);
+			$statement->bindValue(':cor', $cor);
+			$statement->bindValue(':idutil', $_SESSION['id']);
+		
+			$statement->execute();
 	
-		if (!$nome){
-			$erros[]= 'O nome é obrigatorio!';
+			// Redireciona para a pagina dos tipos
+			header('Location: ./tipos.php');
+			}
 		}
-	
-		if (!$cor){
-			$erros[]= 'A cor é obrigatorio!';
-		}
-		if (empty($erros)){
-	
-		$statement = $pdo->prepare("INSERT INTO tipo(nome, cor) VALUES (:nome, :cor);");
-	
-		$statement->bindValue(':nome', $nome);
-		$statement->bindValue(':cor', $cor);
-	
-		$statement->execute();
-
-		header('Location: ./tipos.php');
-		}
-	}
-
-   	if (isset($_SESSION['email']) && isset($_SESSION['id'])) {   ?>
+?>
 
 <!DOCTYPE html>
 <html>
