@@ -2,40 +2,51 @@
    	session_start();
    	require "./conexao.php";
 
-	//	Fazer aqui o codigo para verficar os dados e dps guardar na bd
-	if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-		$titulo = $_POST['titulo'];
-		$informacao = $_POST['informacao'];
-		$idTipo = $_POST['idTipo'];
-	
-		if (!$titulo){
-			$erros[]= 'O titulo é obrigatório!';
-		}
+	// Verifica se a sessão está iniciada
+   	if (isset($_SESSION['email']) && isset($_SESSION['id'])) {   
+		// Verfica se recebeu um pedido POST
+		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-		if (!$idTipo){
-			$erros[]= 'O tipo é obrigatório!';
+			// Verificacao se os dados foram submetidos
+			// Titulo
+			if (!array_key_exists('titulo', $_POST) || empty($_POST['titulo'])){
+				$erros[]= 'O titulo é obrigatório!';
+			} else {
+				$titulo = $_POST['titulo'];
+			}
+			// Tipo
+			if (!array_key_exists('idTipo', $_POST)){
+				$erros[]= 'O tipo é obrigatório!';
+			} else {
+				$idTipo = $_POST['idTipo'];
+			}
+			// Informacao
+			if (!array_key_exists('informacao', $_POST) || empty($_POST['informacao'])){
+				$erros[]= 'O conteudo é obrigatório!';
+			} else {
+				$informacao = $_POST['informacao'];
+			}
+	
+			if (empty($erros)){
+		
+			$statement = $pdo->prepare("INSERT INTO apontamentos (titulo, informacao, idTipo, idUtiliz) VALUES (:titulo, :informacao, :idTipo, :idUtil);");
+		
+			$statement->bindValue(':titulo', $titulo);
+			$statement->bindValue(':informacao', $informacao);
+			$statement->bindValue(':idTipo', $idTipo);
+			$statement->bindValue(':idUtil', $_SESSION['id']);
+		
+			$statement->execute();
+	
+			header('Location: ./home.php');
+			}
 		}
-	
-		if (!$informacao){
-			$erros[]= 'A informacao é obrigatória!';
-		}
-
-		if (empty($erros)){
-	
-		$statement = $pdo->prepare("INSERT INTO apontamentos (titulo, informacao, idTipo, idUtiliz) VALUES (:titulo, :informacao, :idTipo, :idUtil);");
-	
-		$statement->bindValue(':titulo', $titulo);
-		$statement->bindValue(':informacao', $informacao);
-		$statement->bindValue(':idTipo', $idTipo);
+		// Busca todos os tipos disponiveis
+		$statement = $pdo->prepare("SELECT * FROM tipo WHERE idUtil = :idUtil and ativo=1");
 		$statement->bindValue(':idUtil', $_SESSION['id']);
-	
 		$statement->execute();
-
-		header('Location: ./home.php');
-		}
-	}
-
-   	if (isset($_SESSION['email']) && isset($_SESSION['id'])) {   ?>
+		$catgs = $statement->fetchAll(PDO::FETCH_ASSOC);  
+?>
 
 <!DOCTYPE html>
 <html>
@@ -46,6 +57,7 @@
 		integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 	<link rel="stylesheet" href="./estilos/navbar.css">
 	<link rel="stylesheet" href="./estilos/home.css">
+	<link rel="stylesheet" href="estilos/user.css">
 	<link rel="shortcut icon" href="./image/favi.png" />
 </head>
 
@@ -55,30 +67,45 @@
 	<div class="container">
 		<form class="form" action="#" method="post">
 			<h1> Criar um Novo Apontamento</h1> <br>
-			
-				<div class="field">
-					<div class="control">
-						<label for="#titulo"> <h5> Titulo: </h5></label><br>
-						<input style="min-width: 40rem;" name="titulo" class="input" type="text" placeholder="Insira o titulo do apontamento...">
-					</div>
-				</div>
+			<?php if(!empty($erros)) {
+				foreach ($erros as $erro) {
+					echo ('<h6 style="color:red;">' . $erro . ' </h6>');
+				}
+			} ?>
+			<div>
 
-				<div class="field">
-					<div class="control">
-						<label for="#idTipo"> <h5> Categoria: </h5></label><br>
-						<select name="idTipo" style="min-width: 40rem;">
-							<option value="14">Aniversários</option>
-							<option value="15">Localização</option>
-						</select>			
-					</div>
+			<div class="field">
+				<div class="control">
+					<label for="#titulo">
+						<h5> Titulo: </h5>
+					</label><br>
+					<input style="min-width: 40rem;" name="titulo" class="input" type="text"
+						placeholder="Insira o titulo do apontamento...">
 				</div>
+			</div>
 
-				<div class="field">
-					<div class="control">
-						<label for="#informacao"> <h5> Conteudo: </h5></label><br>
-						<textarea placeholder="Insira o conteudo do apontamento..." name="informacao" cols="79" rows="7"></textarea>
-					</div>
+			<div class="field">
+				<div class="control">
+					<label for="#idTipo">
+						<h5> Tipo de Apontamento: </h5>
+					</label><br>
+					<select name="idTipo" style="min-width: 40rem;" class="input">
+						<?php foreach($catgs as $catg): ?>
+						<option value="<?php echo $catg['idTIpo'];?>"><?php echo $catg['nome'];?></option>
+						<?php endforeach; ?>
+					</select>
 				</div>
+			</div>
+
+			<div class="field">
+				<div class="control">
+					<label for="#informacao">
+						<h5> Conteudo: </h5>
+					</label><br>
+					<textarea placeholder="Insira o conteudo do apontamento..." name="informacao" cols="79"
+						rows="7"></textarea>
+				</div>
+			</div>
 
 			<br>
 			<div>

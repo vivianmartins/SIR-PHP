@@ -6,7 +6,7 @@
 			</li>
 
 			<li><a style="	font-size: 22px;" href="./home.php"> Apontamentos </a></li>
-			<li><a href="./tipos.php"> Categorias </a></li>
+			<li><a href="./tipos.php"> Tipos </a></li>
 			<li><a href="./lixo.php"> Lixo </a></li>
 			<?php /*
 			<!-- <li><a style="	font-size: 22px;" href="#"> Filtrar </a></li> -->

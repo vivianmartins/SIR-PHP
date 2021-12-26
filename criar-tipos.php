@@ -2,32 +2,40 @@
    	session_start();
    	require "./conexao.php";
 
-	//	Fazer aqui o codigo para verficar os dados e dps guardar na bd
-	if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-		$nome = $_POST['nome'];
-		$cor = $_POST['cor'];
-	
-		if (!$nome){
-			$erros[]= 'O nome é obrigatorio!';
-		}
-	
-		if (!$cor){
-			$erros[]= 'A cor é obrigatorio!';
-		}
-		if (empty($erros)){
-	
-		$statement = $pdo->prepare("INSERT INTO tipo(nome, cor) VALUES (:nome, :cor);");
-	
-		$statement->bindValue(':nome', $nome);
-		$statement->bindValue(':cor', $cor);
-	
-		$statement->execute();
+	// Verifica se a sessão está iniciada
+   	if (isset($_SESSION['email']) && isset($_SESSION['id'])) {   
+		// Verfica se recebeu um pedido POST
+		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+			// Verifica se recebeu todos os valores
+			
+			if (!array_key_exists('nome', $_POST) || empty($_POST['nome'])){
+				$erros[]= 'O nome é obrigatorio!';
+			} else {
+				$nome = $_POST['nome'];
+			}
+			
+			if (!array_key_exists('cor', $_POST)){
+				$erros[]= 'A cor é obrigatoria!';
+			} else {
+				$cor = $_POST['cor'];
+			}
 
-		header('Location: ./tipos.php');
+			if (empty($erros)){
+		
+			// Insere na BD
+			$statement = $pdo->prepare("INSERT INTO tipo(nome, cor, idUtil) VALUES (:nome, :cor, :idutil);");
+		
+			$statement->bindValue(':nome', $nome);
+			$statement->bindValue(':cor', $cor);
+			$statement->bindValue(':idutil', $_SESSION['id']);
+		
+			$statement->execute();
+	
+			// Redireciona para a pagina dos tipos
+			header('Location: ./tipos.php');
+			}
 		}
-	}
-
-   	if (isset($_SESSION['email']) && isset($_SESSION['id'])) {   ?>
+?>
 
 <!DOCTYPE html>
 <html>
@@ -38,6 +46,7 @@
 		integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 	<link rel="stylesheet" href="./estilos/navbar.css">
 	<link rel="stylesheet" href="./estilos/home.css">
+	<link rel="stylesheet" href="estilos/user.css">
 	<link rel="shortcut icon" href="./image/favi.png" />
 </head>
 
@@ -47,9 +56,14 @@
 	<div class="container">
 		<form class="form" action="#" method="post">
 			<h1> Criar um novo tipo de apontamento</h1>
+			<?php if(!empty($erros)) {
+				foreach ($erros as $erro) {
+					echo ('<h6 style="color:red;">' . $erro . ' </h6>');
+				}
+			} ?>
 			<div>
 				<label for="#nome"> <h5> Nome: </h5></label><br>
-				<input type="text" name="nome" id="nome">
+				<input type="text" name="nome" id="nome" class="input">
 			</div>
 			<!-- Cor -->
 			<p><h5> Cor de fundo: </h5></p>
