@@ -9,7 +9,7 @@ $email = $_POST['email'];
 $senha = $_POST ['senha'];
 
 try {
-	$statement = $pdo->prepare("SELECT * FROM utilizadores WHERE email = :email");
+	$statement = $pdo->prepare("SELECT * FROM utilizadores WHERE email = :email and ativo = 1");
 	$statement->bindValue(':email', $email);
 	$statement->execute();
 	$row = $statement->fetchAll(PDO::FETCH_ASSOC);
