@@ -37,23 +37,12 @@ session_start();
          <div class="field">
              <div class="control">
                   <input name="nome" type="text" class="input" placeholder="Insira o seu nome" autofocus>
-                 <?php  if(isset($_SESSION['error']))
-                  {  echo $_SESSION['error'];
-                     unset($_SESSION['error']);
-                  }?>  
              </div>
          </div>
         
          <div class="field">
              <div class="control">
                  <input name="email" type="text" class="input" placeholder="Insira o seu email">
-                 <?php 
-                if(isset($_SESSION['erro_m'])){
-                    echo($_SESSION ['erro_m'] );
-                    unset ($_SESSION['erro_m']);
-;                }
-                 ?>
-                
              </div>
          </div>
 
@@ -61,9 +50,9 @@ session_start();
              <div class="control">
                <input name="senha" class="input" type="password" placeholder="Insira a senha">
                 <?php                         
-              if(isset($_SESSION['error']))
-                  {  echo $_SESSION['error'];
-                     unset($_SESSION['error']);
+              if(isset($_SESSION['erro']))
+                  {  echo $_SESSION['erro'];
+                     unset($_SESSION['erro']);
                   }?>  
              </div>  
              

@@ -54,7 +54,7 @@
 		<div class="row">
 			<div class="col-md-6 mt-1" style="display: flex; flex-direction: row-reverse;">
 				<div class="dropdown mr1">
-					<span class="button button-dark">Filtrar Por Categoria</span>
+					<span class="button button-dark m1">Filtrar Por Categoria</span>
 					<div class="dropdown-content">
 						<a class="button" href="/tp1sir/home.php"> Todos</a>
 						<?php foreach($cards as $card): ?>
@@ -66,14 +66,14 @@
 					</div>
 				</div>
 				<div>
-					<a href="./criar-apontamentos.php"  class="button button-dark mr1"> Criar Novo Apontamento</a>
+					<a href="./criar-apontamentos.php"  class="button button-dark m1"> Criar Novo Apontamento</a>
 				</div>
 			</div>
 
 			<div class="col-md-6 mt-1" style="display: flex;">
 				<form action="#" method="get">
 					<input type="text" id="search" name="search" placeholder="<?php echo($srch); ?>">
-					<button type="submit" class="button button-dark"> <i class="bi bi-search"></i></button>
+					<button type="submit" class="button button-dark m1"> <i class="bi bi-search"></i></button>
 				</form>
 			</div>
 		</div>

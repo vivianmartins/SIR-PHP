@@ -23,17 +23,17 @@ if (!isset($_SESSION['email']) && !isset($_SESSION['id'])) {   ?>
         <div class="background">
             <div class="shape"></div>
             <div class="shape"></div>
-        </div>
+        </div> 
+          
+        <div class="container">          
         <div class="box">
-
+      
             <!-------- FORMULÁRIO -----------------------------------------
 	        --------------------------------------------------------------->
+            <div class="col-lg-auto-2">
             <form action="./login.php" method="POST">
-       
-
                 <img src="image/4.png" class="imag" alt="logo">
                 <h3>Bem vindo, inicie sessão!</h3>
-
                 <div class="field">
                     <div class="control">
                         <input name="email" type="text" class="input" placeholder="Insira o seu email">
@@ -60,7 +60,10 @@ if (!isset($_SESSION['email']) && !isset($_SESSION['id'])) {   ?>
                 <div>
                     <p1>Não possui conta conta?<a href="registar.php"> CRIAR CONTA </a>
                 </div>
-            </form>
+                
+            </form> 
+                </div>
+            </div>
         </div>
     </section>
 </body>

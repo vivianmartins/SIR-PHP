@@ -31,7 +31,8 @@ if(isset($_POST['registar'])){
             }
         } else {
        /* $_SESSION ['erro_m']="Email já existe";	*/
-       	$_SESSION ['error']="Campos obrigatórios";	
+       
+           $_SESSION ['erro']="Campos obrigatórios";	
           
         }
     }catch(PDOException $e){

@@ -5,7 +5,7 @@ session_start();
 //vai buscar o id
 $idUtiliz =  $_SESSION['id'];
 
-$statement = $pdo ->prepare  ("SELECT * FROM utilizadores where  idUtiliz = :id");
+$statement = $pdo ->prepare  ("SELECT * FROM utilizadores where   ativo=1  and idUtiliz = :id");
 $statement->bindValue(':id', $idUtiliz);
 $statement->execute();
 $utilizadores = $statement->fetch(PDO::FETCH_ASSOC);
@@ -13,7 +13,6 @@ $utilizadores = $statement->fetch(PDO::FETCH_ASSOC);
 
 
 $nome = $utilizadores ['nome'];
-$email = $utilizadores ['email'];
 $senha = $utilizadores['senha'];
 
 $erros = [];
@@ -94,11 +93,6 @@ include_once './navbar.php'
                     <input class="input" id="senha" type="password" name="senha">
                     <br>
                 </div>
-
-                <div class="col-lg-mb-3">
-                    <label class="edtext">Email: </label>
-                    <p class="input"> <?php echo $utilizadores['email']; ?></p>
-                </div>
                 <br>
 
                 <!--FALTA         <div class="mb-3">
@@ -108,7 +102,7 @@ include_once './navbar.php'
                     -->
 
                 <div class="mb-3">
-                    <a class="botaoup" style="color:white; width:100%" href="perfiluser.php">Voltar ao perfil</a>
+                    <a class="botaoup" style="color:white; width:100%;" href="perfiluser.php">Voltar ao perfil</a>
                 </div>
                 <button type="submit" class="botaoup">Submeter</button>
 

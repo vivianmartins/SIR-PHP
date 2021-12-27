@@ -11,6 +11,8 @@
 			<li style="float:right ">
 				<a style="font-size: 22px; margin-right: 4rem" href="./perfiluser.php"> <?php echo($_SESSION['nome']); ?> </a>
 			</li>
+	
+
 		</ul>
 	</nav>
 
