@@ -9,7 +9,7 @@
 			<li><a href="./tipos.php"> Tipos </a></li>
 			<li><a href="./lixo.php"> Lixo </a></li>
 			<li style="float:right ">
-				<a style="font-size: 22px; margin-right: 4rem" href="./perfiluser.php"> <?php echo $_SESSION['nome'] ?> </a>
+				<a style="font-size: 22px;" href="./perfiluser.php"> <?php echo $_SESSION['nome'] ?> </a>
 			</li>
 	
 
