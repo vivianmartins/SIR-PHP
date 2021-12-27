@@ -32,12 +32,12 @@ if(isset($_POST['registar'])){
         } else {
        /* $_SESSION ['erro_m']="Email já existe";	*/
        
-           $_SESSION ['erro']="Campos obrigatórios";	
+           $_SESSION ['erro']="Dados inválidos";	
           
         }
     }catch(PDOException $e){
             echo "erro: " .$e->getMessage();
         }
     } 
-                   header('location: registar.php');
+    header('location: registar.php');
 ?>

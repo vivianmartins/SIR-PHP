@@ -38,17 +38,16 @@ if($_SERVER ['REQUEST_METHOD'] === 'POST'){
             $statement -> bindValue(':nome', $nome);
             $statement -> bindValue(':senha', $hashed_senha);
             $statement->execute();
-          
+
+            $_SESSION['nome'] = $nome;     
         }
         catch (PDOException $e)
-        {
-            {
-               
-                echo $e;
-                die();
-              }
-                     header('location: perfiluser.php');
-      }		
+        {  
+            echo $e;
+            die(); 
+            header('location: perfiluser.php');
+      }
+      header('location: perfiluser.php');		
        
     }		
 }
