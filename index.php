@@ -29,11 +29,7 @@ if (!isset($_SESSION['email']) && !isset($_SESSION['id'])) {   ?>
             <!-------- FORMULÁRIO -----------------------------------------
 	        --------------------------------------------------------------->
             <form action="./login.php" method="POST">
-                <?php if (isset($_GET['error'])) { ?>
-                    <div class="alert alert-danger" role="alert">
-                        <?=$_GET['error']?>
-                    </div>
-                <?php } ?>
+       
 
                 <img src="image/4.png" class="imag" alt="logo">
                 <h3>Bem vindo, inicie sessão!</h3>
@@ -46,9 +42,17 @@ if (!isset($_SESSION['email']) && !isset($_SESSION['id'])) {   ?>
 
                 <div class="field">
                     <div class="control">
-                        <input name="senha" class="input" type="password" placeholder="Insira a senha">
+                        <input  name="senha" class="input" type="password"  placeholder="Insira a senha">
+            
                     </div>
                 </div>
+                <br>
+                <?php 
+                if(isset($_SESSION['error'])){
+                    echo('<div style="color:brown; 	font-weight: bold;">'. $_SESSION ['error'] . '</div>');
+                    unset ($_SESSION['error']);
+;                }
+                 ?>
                 <div>
                     <button type="submit" name="login" class="button_r" role="button">Iniciar sessão</button>
                 </div>

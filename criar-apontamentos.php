@@ -109,7 +109,7 @@
 
 			<br>
 			<div>
-				<button class="button button-dark" type="submit"> Confirmar</button>
+				<button style="background-color:#1e2e4d; color:white;" class="button button" type="submit"> Confirmar</button>
 			</div>
 		</form>
 	</div>

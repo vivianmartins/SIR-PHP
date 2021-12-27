@@ -66,7 +66,7 @@
 					</div>
 				</div>
 				<div>
-					<a href="./criar-apontamentos.php" class="button button-dark mr1"> Criar Novo Apontamento</a>
+					<a href="./criar-apontamentos.php"  class="button button-dark mr1"> Criar Novo Apontamento</a>
 				</div>
 			</div>
 

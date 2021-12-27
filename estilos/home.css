@@ -56,16 +56,16 @@
 }
 
 .button {
-	background-color: white;
+	background-color: rgb(99, 96, 96);
 	border: none;
-	color: black;
+	color: #1e2e4d;;
 	padding: 0.5rem 1rem;
 	text-align: center;
 	text-decoration: none;
 	display: inline-block;
 	transition-duration: 0.4s;
 	cursor: pointer;
-	border-radius: 0.5rem;
+	border-radius: 0.1rem;
 }
 
 .button:hover {
@@ -74,7 +74,7 @@
 }
 
 .button-dark {
-	background-color: black;
+	background-color: #253a64;;
 	color: white;
 }
 

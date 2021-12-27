@@ -7,7 +7,6 @@ $statement = $pdo->prepare("UPDATE utilizadores SET ativo='0' WHERE idUtiliz = :
 $statement->bindValue(':id', $idUtiliz);
 $statement->execute();
 
-/* Falta redirecionar*/
 header('Location: ./logout.php');
 ?>
 

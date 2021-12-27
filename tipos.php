@@ -27,7 +27,7 @@
 	<?php require_once "./navbar.php"; ?>
 
 	<div class="container">
-		<a class="button button-dark m1" href="./criar-tipos.php" class="m1"> Criar Tipos</a>
+		<a class="button button-dark m1" href="./criar-tipos.php" > Criar Tipos</a>
 
 		<!-- Cards com os tipos ja criados para depois se poder editar -->
 		<div class="row">

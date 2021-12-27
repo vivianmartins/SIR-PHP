@@ -1,5 +1,6 @@
 <?php
 require_once './conexao.php';
+session_start();
 
 if(isset($_POST['registar'])){
 
@@ -29,11 +30,13 @@ if(isset($_POST['registar'])){
 
             }
         } else {
-            // colocar aqui os erros
-            header('location: registar.php');
+       /* $_SESSION ['erro_m']="Email já existe";	*/
+       	$_SESSION ['error']="Campos obrigatórios";	
+          
         }
     }catch(PDOException $e){
             echo "erro: " .$e->getMessage();
         }
-    }
+    } 
+                   header('location: registar.php');
 ?>

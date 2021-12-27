@@ -48,7 +48,8 @@ if (isset($_SESSION['email']) && isset($_SESSION['id'])) {  ?>
             <a style="color: white; " href="perfilupdate.php?id=<?$id ?> " class="botao">Editar Perfil</a>
 
             <!-- <button type="submit" class="botao"> Apagar Conta</button> -->
-            <a href="./perfildeletar.php" class="botao"> Apagar Conta</a>
+            <a   style="color: white; " href="./perfildeletar.php" class="botao"> Apagar Conta</a>
+            <a   style="color: white; "     href="./logout.php" class="botao"> Sair da conta</a>
 
         </div>
 

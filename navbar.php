@@ -2,31 +2,14 @@
 	<nav>
 		<ul class="menu">
 			<li>
-				<img src="./image/4.png" class="imag" alt="logo">
+				<img src="./image/4_1.png" class="imag" alt="logo">
 			</li>
 
 			<li><a style="	font-size: 22px;" href="./home.php"> Apontamentos </a></li>
 			<li><a href="./tipos.php"> Tipos </a></li>
 			<li><a href="./lixo.php"> Lixo </a></li>
-			<?php /*
-			<!-- <li><a style="	font-size: 22px;" href="#"> Filtrar </a></li> -->
-			<li><a style="	font-size: 22px;" href="#">Criar</a>
-				<ul>
-
-					<l><a href="./tipos.php">Tipos</a></l>
-					<!-- <l><a href="#">Categorias</a></l> -->
-					<l><a href="#">Apontamentos</a></l>
-				</ul>
-			</li>
-			*/ ?>
-			<!--SUBMENU DO USERNAME-->
-			<!-- <li> <input type="text" style="float:right " class="pesquisar" placeholder="Pesquisar"></li> -->
 			<li style="float:right ">
-				<a style="font-size: 22px; margin-right: 4rem" href="#about"> <?php echo($_SESSION['nome']); ?> </a>
-				<ul>
-					<l1><a href="perfiluser.php">Perfil</a></l1>
-					<l1><a href="./logout.php">Logout</a></l1>
-				</ul>
+				<a style="font-size: 22px; margin-right: 4rem" href="./perfiluser.php"> <?php echo($_SESSION['nome']); ?> </a>
 			</li>
 		</ul>
 	</nav>
@@ -34,8 +17,8 @@
 	<!--footer falta colocar a informação-->
 
 	<footer class="footer">
-
-		<p>SISTEMAS DE INFORMAÇÃO EM REDE </p>
-
+	
+		<p style=font-style:italic;>“My name is Sherlock Holmes. It is my business to know what other people do not know.”</p>
+<!--<img src="./image/lupa.png" class="imag2" alt="logo">--> 
 	</footer>
 </div>

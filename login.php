@@ -27,7 +27,7 @@ try {
 		// redirect para o dash do user
 			header('Location: ./home.php');
 		} else {
-			echo "ERROR: EMAIL ou SENHA INVALIDOS ";
+			$_SESSION ['error']="EMAIL OU SENHA INVÁLIDO";
 		}
 	}
 } catch (PDOException $e){
