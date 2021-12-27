@@ -30,6 +30,16 @@
 			// Var que contem o placeholder da barra de pesquisa
 			$srch = "Procurar";
 		}
+
+		// Guarda numa var os diferentes tipos de apontamentos para depois filtrar por tipo
+		$tipos = array();
+
+		foreach ($cards as $card) {
+
+			if (array_search($card['nome'], $tipos) === false) {
+				array_push($tipos, $card['nome']);
+			}
+		}
 ?>
 
 <!DOCTYPE html>
@@ -54,13 +64,13 @@
 		<div class="row">
 			<div class="col-md-6 mt-1" style="display: flex; flex-direction: row-reverse;">
 				<div class="dropdown mr1">
-					<span class="button button-dark m1">Filtrar Por Categoria</span>
+					<span class="button button-dark m1">Filtrar Por Tipo</span>
 					<div class="dropdown-content">
 						<a class="button" href="/tp1sir/home.php"> Todos</a>
-						<?php foreach($cards as $card): ?>
+						<?php foreach($tipos as $tipo): ?>
 						<div>
-							<a class="button" href="/tp1sir/home.php?search=<?php echo($card['nome']) ?>">
-								<?php echo($card['nome']) ?></a>
+							<a class="button" href="/tp1sir/home.php?search=<?php echo($tipo);?>">
+								<?php echo($tipo);?></a>
 						</div>
 						<?php endforeach; ?>
 					</div>
