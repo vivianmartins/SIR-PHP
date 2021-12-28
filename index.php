@@ -1,3 +1,5 @@
+
+
 <?php 
 
 session_start();
@@ -20,31 +22,34 @@ if (!isset($_SESSION['email']) && !isset($_SESSION['id'])) {   ?>
 
     <section>
         <!------------------ BACKGROUND ------------------------------>
-        <div class="background">
-            <div class="shape"></div>
-            <div class="shape"></div>
-         
+        <div class="background  col-mb-6 mt-1">
+           <!-- <div class="shape"></div>
+            <div class="shape"></div>--> 
         </div> 
-          
-        <div class="container">          
-        <div class="box">
+
+        
+        <div class=" container">   
+        <img src="image/9.png" class="image" alt="logo">
+             <div class = "box"> 
+    
+  
       
             <!-------- FORMULÁRIO -----------------------------------------
 	        --------------------------------------------------------------->
-            <div class="col-lg-auto-2">
+           
             <form action="./login.php" method="POST">
-                <img src="image/4.png" class="imag" alt="logo">
+                <div class="col-mb-6 mt-1">
+                <img src="image/4.png" class="imag" alt="logo">  
                 <h3>Bem vindo, inicie sessão!</h3>
-                <div class="field">
+                <div class="mb-3 field">
                     <div class="control">
                         <input name="email" type="text" class="input" placeholder="Insira o seu email">
                     </div>
                 </div>
-
-                <div class="field">
+                </div>
+                <div class="col-mb-6 mt-1 field">
                     <div class="control">
                         <input  name="senha" class="input" type="password"  placeholder="Insira a senha">
-            
                     </div>
                 </div>
                 <br>
@@ -54,7 +59,7 @@ if (!isset($_SESSION['email']) && !isset($_SESSION['id'])) {   ?>
                     unset ($_SESSION['erro']);
 ;                }
                  ?>
-                <div>
+                <div class="col-mb-6 mt-1 ">
                     <button type="submit" name="login" class="button_r" role="button">Iniciar sessão</button>
                 </div>
                 <!---BOTAO TEMPORARIO -->
@@ -64,8 +69,8 @@ if (!isset($_SESSION['email']) && !isset($_SESSION['id'])) {   ?>
                 
             </form> 
                 </div>
-            </div>
-        </div>
+           
+         </div>
     </section>
 </body>
 

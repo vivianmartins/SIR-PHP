@@ -72,8 +72,9 @@ include_once './navbar.php'
     <div class="container">
         <div class="card_u">
             <h1 class="mt-5 title">EDITAR PERFIL</h1>
+            <img src="./image/2.png" style="width:25%">
             <?php if (!empty($erros)) : ?>
-            <div class="alert alert-danger">
+            <div style="color:red; font-weight: bold;">
                 <?php foreach ($erros as $erro) : ?>
                 <div><?php echo $erro ?></div>
                 <?php endforeach; ?>

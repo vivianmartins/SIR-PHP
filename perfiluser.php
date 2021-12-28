@@ -56,3 +56,6 @@ if (isset($_SESSION['email']) && isset($_SESSION['id'])) {  ?>
 <?php }else{
 	header("Location: ./index.php");
 } ?>
+
+
+
