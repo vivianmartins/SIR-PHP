@@ -71,7 +71,7 @@ include_once './navbar.php'
 <body>
     <div class="container">
         <div class="card_u">
-            <h1 class="mt-5">EDITAR PERFIL</h1>
+            <h1 class="mt-5 title">EDITAR PERFIL</h1>
             <?php if (!empty($erros)) : ?>
             <div class="alert alert-danger">
                 <?php foreach ($erros as $erro) : ?>
@@ -89,21 +89,15 @@ include_once './navbar.php'
 
                 <div class="mb-3">
                     <label class="edtext">Senha: </label>
-                    <input class="input" id="senha" type="password" name="senha">
+                    <input class="input" id="senha" type="password" name="senha" value="<?php echo $senha ?>">
                     <br>
                 </div>
                 <br>
 
-                <!--FALTA         <div class="mb-3">
-            <label for="confirma_senha">Confirme sua senha:</label>
-            <input class="input" type="password" id="confirma_senha" name="senha2" >
-        vou colocar cofnirmar senha 
-                    -->
-
-                <div class="mb-3">
-                    <a class="botaoup" style="color:white; width:100%;" href="perfiluser.php">Voltar ao perfil</a>
+                <div class="mb-3 botao  ">
+                    <a  style="color:white;" href="./perfiluser.php">Voltar ao perfil</a>
                 </div>
-                <button type="submit" class="botaoup">Submeter</button>
+                <button type="submit" class="botao">Submeter</button>
 
             </form>
         </div>

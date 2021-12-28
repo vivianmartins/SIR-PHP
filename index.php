@@ -23,6 +23,7 @@ if (!isset($_SESSION['email']) && !isset($_SESSION['id'])) {   ?>
         <div class="background">
             <div class="shape"></div>
             <div class="shape"></div>
+         
         </div> 
           
         <div class="container">          
@@ -48,9 +49,9 @@ if (!isset($_SESSION['email']) && !isset($_SESSION['id'])) {   ?>
                 </div>
                 <br>
                 <?php 
-                if(isset($_SESSION['error'])){
-                    echo('<div style="color:brown; 	font-weight: bold;">'. $_SESSION ['error'] . '</div>');
-                    unset ($_SESSION['error']);
+                if(isset($_SESSION['erro'])){
+                    echo('<div style="color:brown; 	font-weight: bold;">'. $_SESSION ['erro'] . '</div>');
+                    unset ($_SESSION['erro']);
 ;                }
                  ?>
                 <div>
