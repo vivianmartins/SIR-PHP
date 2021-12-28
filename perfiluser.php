@@ -43,11 +43,7 @@ if (isset($_SESSION['email']) && isset($_SESSION['id'])) {  ?>
             <!-- <p>Senha: <?php // echo $utilizadores['senha']; ?></p> -->
             <br>
             <!--<a  //?php 'echo <a href="update.php?id='.$id.'"></a>'; ?>  class="btn btn-primary">Editar conta</a>-->
-
-
-            <a style="color: white; " href="perfilupdate.php?id=<?$id ?> " class="botao">Editar Perfil</a>
-
-            <!-- <button type="submit" class="botao"> Apagar Conta</button> -->
+            <a style="color: white; " href="./perfilupdate.php?id=<?$id ?> " class="botao">Editar Perfil</a>          
             <a   style="color: white; " href="./perfildeletar.php" class="botao"> Apagar Conta</a>
             <a   style="color: white; "     href="./logout.php" class="botao"> Sair da conta</a>
 

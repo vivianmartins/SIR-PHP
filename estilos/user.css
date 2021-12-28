@@ -26,12 +26,9 @@ p{
 
 .card_u{
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  max-width: 1500px;
+  max-width: 950px;
   margin: auto;
-  text-align: center;
- 
-  
-  
+  text-align: center; 
 }
 
 .botaoup{
@@ -39,7 +36,7 @@ p{
   color: white;
   background-color: #1e2e4d;
   padding: 20px;
-  width: 100%;
+
   }
 
 .input {
