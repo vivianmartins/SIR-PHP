@@ -66,10 +66,10 @@
 				<div class="dropdown mr1">
 					<span class="button button-dark m1">Filtrar Por Tipo</span>
 					<div class="dropdown-content">
-						<a class="button" href="/tp1sir/home.php"> Todos</a>
+						<a class="button button-dark" href="/tp1sir/home.php"> Todos</a>
 						<?php foreach($tipos as $tipo): ?>
 						<div>
-							<a class="button" href="/tp1sir/home.php?search=<?php echo($tipo);?>">
+							<a class="button button-dark" href="/tp1sir/home.php?search=<?php echo($tipo);?>">
 								<?php echo($tipo);?></a>
 						</div>
 						<?php endforeach; ?>
