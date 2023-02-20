@@ -1,4 +1,4 @@
-# Practical Work SIR - PHP
+# Practical Work (SIR - PHP)
 WEB APPLICATION
 A logged-on usershould achieve the following in-app operations/actions:
 </br>
